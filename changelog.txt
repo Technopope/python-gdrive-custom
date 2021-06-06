@@ -1,0 +1,205 @@
+- testing implementation: Add error message for google transcode still processing #147
+- added exception handling: Large teamdrive tv series folder incomplete strm creation #135
+- send Content-Type (Is anything required to run behind a reverse proxy that handles SSL termination? #111)
+v0.1.40 (2019-09-11)
+- fix for Emby 4.2.1 and 4.3 breaks passthrough reverse-proxy hack #143
+- implement for emby 4.2.10 : Passthrough doesn`t work #123
+- implement -- Make passthrough default true #132
+v0.1.33 (2019-03-06)
+- changes for plex
+v0.1.32 (2019-01-16)
+- add support for tv show seasons > 100
+- add local as whitelist for scheduler
+- fixes for /list and username+password prompt
+v0.1.31 (2019-01-08)
+- security fixes - make all POST requests require login
+- make GET/POST case insensitive
+- remove depricated play method
+- security fixes -- ensure only allow PLAY, MODE=VIDEO or MODE=INDEX when folder!=root allow unauthenticated access
+v0.1.30 (2019-01-07)
+- fix a building STRM issue when filename contains #
+- add a new hash file method
+- add support for multiple emby logs (for multiple instances)
+- add no scheduler version
+- don't print STRM log header in append
+- testing search fix
+- add support for multiple emby IP whitelist (, deliminated)
+- add a separate scheduler process
+- remove remaining retain folder calls
+- fix for 0 STRM files on change tracking
+- fix for when not using hashfiles
+- remove retain folders parameter from STRM creation
+- add file swapping support (using md5 hash - md5files)
+- add filesize to STRM log
+- change write to append to STRM log
+- add faulthandler support
+v0.1.28 (2018-08-21)
+- wrap exception around dbm sync
+- add missing handler for httplib
+- add missing handler for LOGERROR
+v0.1.27 (2018-08-04)
+- handle situation where passthrough=false: add support for service accounts #35
+- preliminary working: add support for service accounts #35
+- started work on : add support for service accounts #35
+- implemented: add search functionality to team drives #83
+- started work on add search functionality to team drives #83
+- change "never ran" to "starting shortly"
+- finalized speed optimations for STRM creation
+- updates to caching for STRM creation optimizations
+- add a force run task to + in scheduler
+- STRM creation optimization fix for catalog (and retainFolders = false)
+- testing: STRM creation - files with '/' in the name cause error writing to disk #78
+- STRM creation optimization fixes tested
+- STRM creation optimization -- no isFolderIDInPath checks for root or teamdrive root
+- STRM creation support specific folders on team drives
+- fix break in STRM functionality caused by   add additional STRM parameter to maintain folder structure #73
+- implement: add additional STRM parameter to maintain folder structure #73
+v0.1.26 (2018-07-21)
+- fix for shared folders change tracking -- STRM creation - shared folders do not work with change tracking #74
+- added additional logging and exception handling to scheduler executer
+- fix non-catalog "save to STRM"
+- fix for STRM counting
+- ensure preferred_quality has override=true in menu and STRM creation
+- fix: STRM creation - Change tracking not working in this 1 case #69
+- correction for folderid when "create scheduled job" -- using incorrectly as team drive id whereas it should default to root
+- implement: STRM creation - tv shows & catalog - preserve show title #72
+- fix: add fallback to original if there are no transcode links
+- fix: original taking precedence over override #68
+v0.1.25 (2018-06-12)
+- add STRM creation parameter - skip partial files
+- fix for STRM logging
+- add pquality=3 = original
+- fix: Windows - \ is being replaced by %5C in settings #62
+- fixing: Failed to pull down .nfo and .srt #61
+- reset running scheduled jobs on load
+- fixing missing parameters on scheduled task
+- implement: Add an option to reset the runtime status of scheduled jobs #59
+v0.1.24 (2018-05-20)
+- substitue title name for folder name: Allow the user create scheduled tasks for a particular folder #58
+v0.1.23 (2018-05-19)
+- add a parameter to STRM creation routine for: Download SRT and NFO when available. #46
+- remove NFO and SRT from saving to cloud spreadsheet and STRM log
+- implement: Download SRT and NFO when available. #46
+- add subtitles and nfo files to media collection objects and assign these MEDIA_VIDEO_HELPER file type
+- improvement: for downloadGeneralFile, move up the file check before the web call
+- fix: strm creation not inserting 'http://' at the start #57
+v0.1.22 (2018-05-18)
+- implemented: Scheduling STRM support non-catalog structures #45
+- testing: Scheduling STRM support non-catalog structures #45
+- remove logging for favicon
+- improvements for STRM creation - remove blank lines from log
+- improvements for STRM creation - better logic around movie dates
+- fix for catalogging disabling for STRM creation
+- improvements for STRM creation - adding stripping for title/show name
+- fix for missing STRM fields
+- make "create Google Transcode" STRM files default to false
+v0.1.20 (2018-05-12)
+- fix: Can't get passthrough to work #55
+- cleanup single STRM creation (removed unapplicable prompts from process for a single file): catalog strms to false stops transcoding AND original streams being created #53
+- fix for folders (not single STRM): catalog strms to false stops transcoding AND original streams being created #53
+- add manual whitelist ip
+- should whitelist local public IP for ffprobe requests
+v0.1.18 (2018-05-02)
+- add logic to override passthrough with forced transcode quality selection by cookie
+- add support to quality selection cookie
+- implemented: Using cookies to set preferred resolution #31
+- implemented: Add a feature to disable access unless authenticated in emby #41
+- add IPV6 support for emby IP filtering
+- adapt emby IP filtering for cloudflare support
+v0.1.17 (2018-05-01)
+- enable emby IP filtering
+v0.1.16 (2018-04-20)
+- fix: auto detect for pycrypto #49
+- fix: Auto default quality #50
+- fix: Python crypto not found #44
+- fix for displaying accounts on scheduler
+- sync with recent KODI fixes
+v0.1.15 (2018-03-29)
+- fixes for building STRM in non-catalog mode
+v0.1.14 (2018-03-25)
+- building STRM - enable creation of google transcode STRM
+- building STRM - add transcode, original, skip 0p flags, add resolution append message
+- fix check fo 0p resolution
+- force http to be generated in STRM files if absent in host variable
+- make a change to forking logic
+v0.1.12 (2018-03-21)
+- change emby strm file creation from [#p].strm to - #p.strm
+- ensure all team drives are fetched (fix pagination)
+- add missing delete method
+v0.1.11 (2018-03-19)
+- implement: Error in last release 0.1.10 #43
+- fix for DBM fetching of change token (moved out of buildstrm method)
+- resolve deadlock issue with scheduler updating change tracking numbers
+- activate the scheduler
+- fix gplayer .play missing error
+- fix for default.py in STRM folder creation
+v0.1.10 (2018-03-14)
+- implement: select stream quality #17
+- implement: Add support for specifying transcode type in URL #29
+- fix preferred quality matching for transcoding
+- add debug mode
+v0.1.9 (2018-03-13)
+- STRM cleanup
+- fix for ensuring default host is used in STRM creation
+- add scheduler log and server console logging options; redirect output to logging routine
+- fix for enroll bug when accounts >= 10
+- get rid of DBM for scheduler
+- add STRM logging method (optional)
+- add context items to team drive entries (treat them like folders)
+- STRM building - add force parameter (to force overwrite)
+- STRM building - add 'resolution' parameter to append resolution to STRM filename
+- make correction for checking if STRM file exists already
+- workaround issue - buildstrm folders not working #40
+v0.1.8 (2018-02-21)
+- implement: Support to SSL certificates (HTTPS) #39
+- add saltpassword instead of using username
+- combine buildstrm and buildstrm2 into one method
+- fix for when user removes username/password
+- setting interface password fix
+- fix for blanking out setting parameters
+- add slideshow to + options
+- fix passthrough, force never_stream = true
+- add passthrough to settings pane
+- if passthrough = true, set never_stream = false
+v0.1.7 (2017-12-28)
+- fix reload to reload user settings
+- fix port issue in listing
+- add session persistence via cookies (for /list and /settings , implementing #28)
+- cleanup slideshow interface
+- add crypto slideshow support
+v0.1.6 (2017-12-17)
+- fix accessing settings when no user defined
+- fix default username and password (None -> '')
+v0.1.5 (2017-12-17)
+- added support for crypto photos
+- fix for enroll account (recent break)
+- fix for starting with no dbm file (recent break)
+v0.1.4 (2017-12-16)
+- implement: support for photos playback #10
+- secure settings pane
+- fix for TV/Movies STRM generation
+- implemented search function
+- redirect dialogs to screen
+- fixup settings pane "autocomplete"ing the fields
+- hide settings that only pertain to kodi
+- enable settings
+- implemented: configuring your plugin settings #13
+- fix audio playback
+- add [switch to photos] context switch
+- add sorting for encrypted items
+- fully working encryption streaming playback including on MAC/iOS
+- crypto support
+v0.1.3 (2017-11-24)
+- add parameters keyvalue (generate kv parameter representing the encrypted parameters passed in) and hide (to sumpress displaying the decrypted parameters)
+- add duration and resolution
+- added thumbnail support
+v0.1.2 (2017-11-22)
+- fix stability issue (related to query parameters not reloading correctly between navigations
+v0.1.1 (2017-11-19)
+- fix never_stream = true
+- add support for secure login for /, /list, /kill (to enable, run dbm_setup.py ./gdrive.db username username_to_create and run dbm_setup.py ./gdrive.db password password_to_use)
+- add "passthrough" mode (to enable, run dbm_setup.py ./gdrive.db passthrough true)
+- start work on settings
+- decode language codes into strings
+v0.1.0 (2017-11-18)
+- first alpha release for testing
